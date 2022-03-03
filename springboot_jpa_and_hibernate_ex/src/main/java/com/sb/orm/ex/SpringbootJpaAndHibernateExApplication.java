@@ -25,7 +25,7 @@ public class SpringbootJpaAndHibernateExApplication implements CommandLineRunner
 		SpringApplication.run(SpringbootJpaAndHibernateExApplication.class, args);
 	}
 
-	@Override
+	@Override //This step for Step2 jdbc template ex
 	public void run(String... args) throws Exception {
 		try {
 			List<Person> personList= dao.findAll();
