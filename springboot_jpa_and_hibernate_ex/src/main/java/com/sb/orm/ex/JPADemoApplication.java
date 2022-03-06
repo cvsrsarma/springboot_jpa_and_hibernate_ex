@@ -1,7 +1,5 @@
 package com.sb.orm.ex;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -11,18 +9,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.sb.orm.ex.step3.jpa01.PersonEntity;
-import com.sb.orm.ex.step3.jpa01.PersonJpaRepository;
+import com.sb.orm.ex.step3.hibernatejparepo.CourseRepository;
 
 @SpringBootApplication
 @Transactional
 public class JPADemoApplication  implements CommandLineRunner{
 
-Logger logger=LoggerFactory.getLogger(this.getClass());
+	Logger logger=LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	PersonJpaRepository personRepo;
-	
+	CourseRepository courseRepo;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootJpaAndHibernateExApplication.class, args);
 	}
@@ -30,9 +27,8 @@ Logger logger=LoggerFactory.getLogger(this.getClass());
 	@Override
 	public void run(String... args) throws Exception {
 		try {
-			List<PersonEntity> personList= personRepo.findAll();
-			logger.info("All Users -> {}", personList);
-			logger.info("Find User {} -> {}", 100001, personRepo.findbyId(100001));
+			logger.info("Course repofindBYid 100001L->{}",courseRepo.findById(100001L));
+			//logger.info("Course repo deleteById 100001L->{}",courseRepo.deleteById(100001L));
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

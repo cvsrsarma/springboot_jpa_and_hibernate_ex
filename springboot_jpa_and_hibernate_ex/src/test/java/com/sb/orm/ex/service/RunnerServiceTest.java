@@ -1,14 +1,14 @@
-package com.sb.orm.ex.utlity;
+package com.sb.orm.ex.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class UtlityTest {
+class RunnerServiceTest {
 
 	@Test
 	void test() {
-		
+		fail("Not yet implemented");
 	}
 
 }

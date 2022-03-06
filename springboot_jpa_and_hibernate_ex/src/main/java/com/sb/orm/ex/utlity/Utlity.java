@@ -16,13 +16,18 @@ public interface Utlity {
 	}
 	
 	public static String generateRandomCity() {
+		return generateRandomText(3)+" City";
+	}
+	
+	public static String generateRandomText(int j) {
 		String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		Random rnd = new Random();
 		StringBuilder sb = new StringBuilder(4);
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < j; i++)
 			sb.append(chars.charAt(rnd.nextInt(chars.length())));
-		return sb.toString()+" City";
+		return sb.toString();
 	}
+	
 	public static Date createRandomDate() {
 		
         int day = createRandomIntBetween(1, 28);
@@ -39,6 +44,11 @@ public interface Utlity {
     }
     public static int createRandomIntBetween(int start, int end) {
         return start + (int) Math.round(Math.random() * (end - start));
+    }
+    
+    public static boolean generateRandomBolean() {
+    	Random rd = new Random();
+    	return rd.nextBoolean();
     }
 
 }
