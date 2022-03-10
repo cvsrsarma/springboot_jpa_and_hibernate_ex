@@ -22,7 +22,7 @@ public interface Utlity {
 	public static String generateRandomText(int j) {
 		String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		Random rnd = new Random();
-		StringBuilder sb = new StringBuilder(4);
+		StringBuilder sb = new StringBuilder(j);
 		for (int i = 0; i < j; i++)
 			sb.append(chars.charAt(rnd.nextInt(chars.length())));
 		return sb.toString();
@@ -50,5 +50,4 @@ public interface Utlity {
     	Random rd = new Random();
     	return rd.nextBoolean();
     }
-
 }

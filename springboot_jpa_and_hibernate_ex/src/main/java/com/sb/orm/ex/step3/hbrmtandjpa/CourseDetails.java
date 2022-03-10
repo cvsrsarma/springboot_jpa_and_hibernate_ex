@@ -29,7 +29,7 @@ public class CourseDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@Column(name = "couse_name")
+	@Column(name = "course_name")
 	private String courseName;
 	@Column(name ="field_in_study")
 	private String field;

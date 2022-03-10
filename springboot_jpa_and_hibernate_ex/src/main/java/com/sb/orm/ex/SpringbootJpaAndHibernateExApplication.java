@@ -5,13 +5,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.sb.orm.ex.service.RunnerService;
+import com.sb.orm.ex.datagenerator.DataGenerator;
+import com.sb.orm.ex.service.RunnerServiceHandler;
 
 @SpringBootApplication
 public class SpringbootJpaAndHibernateExApplication implements CommandLineRunner {
 
 	@Autowired
-	RunnerService service;
+	RunnerServiceHandler service;
+
+	@Autowired
+	DataGenerator dataGen;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootJpaAndHibernateExApplication.class, args);
@@ -19,11 +23,16 @@ public class SpringbootJpaAndHibernateExApplication implements CommandLineRunner
 
 	@Override // This step for Step2 jdbc template ex
 	public void run(String... args) throws Exception {
-		service.runJdbcDao();
-		service.runPersonRepo();
-		service.runCourseRepo();
-		service.runCourseDetailsRepo();
-		
+		try {
+			service.runJdbcDao();
+			service.runPersonRepo();
+			service.runCourseRepo();
+			service.runCourseDetailsRepo();
+			service.runStudentRepo();
+			dataGen.createData();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

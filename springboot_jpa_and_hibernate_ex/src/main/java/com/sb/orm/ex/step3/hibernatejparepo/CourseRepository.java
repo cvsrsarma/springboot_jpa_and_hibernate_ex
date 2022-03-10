@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.sb.orm.ex.step3.hbrmtandjpa.Course;
 
 @Repository
-
+@Transactional
 public class CourseRepository {
 	
 	@Autowired
