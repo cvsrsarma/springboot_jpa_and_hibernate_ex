@@ -1,4 +1,4 @@
-package com.sb.orm.ex.step3.jpa01;
+package com.sb.orm.ex.entities;
 
 import java.sql.Date;
 

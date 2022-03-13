@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sb.orm.ex.step3.hbrmtandjpa.Course;
+import com.sb.orm.ex.entities.Course;
 
 @Repository
 @Transactional

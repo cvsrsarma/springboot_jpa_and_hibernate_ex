@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sb.orm.ex.JPADemoApplication;
+import com.sb.orm.ex.entities.Course;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseRepository;
 
 @RunWith(SpringRunner.class)

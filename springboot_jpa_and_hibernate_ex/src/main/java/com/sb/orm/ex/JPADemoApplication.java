@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.sb.orm.ex.step3.hibernatejparepo.CourseRepository;
 
-@SpringBootApplication
+//@SpringBootApplication
 @Transactional
 public class JPADemoApplication  implements CommandLineRunner{
 

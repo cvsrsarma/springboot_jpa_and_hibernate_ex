@@ -25,32 +25,12 @@ public class RunnerServiceHandler {
 	@Autowired
 	StudentService sService;
 
-	public void runCourseDetailsRepo() {
-		servie.runJPQLMethods();
-	}
-
-	public void runStudentRepo() {
-		sService.runStudentRepo();
-	}
-
-	public void runJdbcDao() {
-		jdbcService.runJdbcDao();
-	}
-
-	public void runPersonRepo() {
-		pService.runPersonRepo();
-	}
-
-	public void runCourseRepo() {
-		cService.runJPQLQueries();
-	}
-
 	public void process() {
-		runJdbcDao();
-		runPersonRepo();
-		runCourseRepo();
-		runCourseDetailsRepo();
-		runStudentRepo();
+		cService.runJPQLQueries();
+		pService.runPersonRepo();
+		jdbcService.runJdbcDao();
+		servie.runJPQLMethods();
+		sService.runStudentRepo();
 	}
 
 }

@@ -1,18 +1,24 @@
 package com.sb.orm.ex.datagenerator;
 
+import java.util.stream.IntStream;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.orm.ex.entities.Passport;
+import com.sb.orm.ex.entities.Review;
+import com.sb.orm.ex.entities.Student;
 import com.sb.orm.ex.step4.relationships.PassportRepo;
 import com.sb.orm.ex.step4.relationships.ReviewRepo;
 import com.sb.orm.ex.step4.relationships.StudentJPARepo;
-import com.sb.orm.ex.step4.relationships.entities.Passport;
-import com.sb.orm.ex.step4.relationships.entities.Review;
-import com.sb.orm.ex.step4.relationships.entities.Student;
 import com.sb.orm.ex.utlity.Utlity;
+
 
 @Service
 public class DataGenerator {
+	Logger logger= LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	StudentJPARepo sRepo;
@@ -27,8 +33,11 @@ public class DataGenerator {
 	}
 
 	public void createData() {
-		Passport passport = createPassportData();
-		Student student= createStudentData(passport);
+		IntStream.range(0, 20).forEach(x->{
+			Passport passport = createPassportData();
+			Student student= createStudentData(passport);
+			logger.info("Student Create with {} and his passport {} ",student,passport);
+		});
 		
 		createDescriptionData();
 	}

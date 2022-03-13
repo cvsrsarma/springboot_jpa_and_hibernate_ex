@@ -1,4 +1,4 @@
-package com.sb.orm.ex.step1.sbex;
+package com.sb.orm.ex.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

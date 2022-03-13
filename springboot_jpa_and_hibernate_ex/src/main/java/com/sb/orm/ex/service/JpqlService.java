@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sb.orm.ex.step3.hbrmtandjpa.CourseDetails;
+import com.sb.orm.ex.entities.CourseDetails;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseDetailsRepo;
 import com.sb.orm.ex.utlity.Utlity;
 

@@ -1,4 +1,4 @@
-package com.sb.orm.ex.step3.hbrmtandjpa;
+package com.sb.orm.ex.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

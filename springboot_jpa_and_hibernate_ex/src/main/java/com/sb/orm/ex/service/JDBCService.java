@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sb.orm.ex.step2.jdbcex.Person;
+import com.sb.orm.ex.entities.Person;
 import com.sb.orm.ex.step2.jdbcex.PersonJdbcDao;
 import com.sb.orm.ex.utlity.Utlity;
 

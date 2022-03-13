@@ -24,12 +24,9 @@ public class SpringbootJpaAndHibernateExApplication implements CommandLineRunner
 	@Override // This step for Step2 jdbc template ex
 	public void run(String... args) throws Exception {
 		try {
-			service.runJdbcDao();
-			service.runPersonRepo();
-			service.runCourseRepo();
-			service.runCourseDetailsRepo();
-			service.runStudentRepo();
-			dataGen.createData();
+			//dataGen.createData();
+			service.process();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
