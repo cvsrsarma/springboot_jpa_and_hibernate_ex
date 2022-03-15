@@ -1,5 +1,7 @@
 package com.sb.orm.ex.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -7,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.orm.ex.entities.Student;
 import com.sb.orm.ex.step4.relationships.PassportRepo;
 import com.sb.orm.ex.step4.relationships.StudentJPARepo;
 import com.sb.orm.ex.step4.relationships.emrepo.PassportEmRepo;
@@ -34,12 +37,24 @@ public class StudentService {
 			logger.info("{} running student find by id ",this.getClass().getName());
 		findStudentById(152L);
 		findStudentByPassportId(152L);
+		findStudentAndCourses(210L);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
+	@Transactional
+	private void findStudentAndCourses(long l) {
+		Optional<Student> std= sRepo.findById(l);
+		if(std.isPresent()) {
+			
+			logger.info("Studnet details {}",std.get().toString());
+			logger.info("List Of Courses ");
+		}
+		
+	}
+
 	private void findStudentByPassportId(long l) {
 		studentEm.retrieveStudentDetails(l);
 		//Optional<Passport> passport = pRepo.findById(l);

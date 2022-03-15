@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Data@NoArgsConstructor
 public class Review {
 	
 	@Id
@@ -24,6 +26,10 @@ public class Review {
 	public Review(String desc) {
 		this.description=desc;
 	}
+	
+	@ManyToOne
+	private Course course;
+	
 	
 
 }

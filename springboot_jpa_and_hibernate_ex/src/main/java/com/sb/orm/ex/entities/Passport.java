@@ -11,9 +11,9 @@ import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Entity@NoArgsConstructor@ToString
+
+@Entity@NoArgsConstructor
 @Data
 public class Passport {
 	
@@ -32,4 +32,11 @@ public class Passport {
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
 	public Student student;
+
+	@Override
+	public String toString() {
+		return "Passport [id=" + id + ", number=" + number + "]";
+	}
+	
+	
 }
