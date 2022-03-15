@@ -12,11 +12,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)//Its mapped to 1 table for 3 classes, 
-//Will add 1 more column in table employee_type values will be part time or full time employee
-@DiscriminatorColumn(name="employeeType")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)//It will create 2 tables for each concrete class with 3 colums id name salary or hourly wage
 @Setter@Getter
-public abstract class Employee {
+public abstract class Employee3 {
 	
 	@Id
 	@GeneratedValue
@@ -30,6 +28,6 @@ public abstract class Employee {
 		return "Employee [id=" + id + ", name=" + name + "]";
 	}
 	
-	public Employee() {}
-	public Employee(String name) {this.name=name;}
+	public Employee3() {}
+	public Employee3(String name) {this.name=name;}
 }
