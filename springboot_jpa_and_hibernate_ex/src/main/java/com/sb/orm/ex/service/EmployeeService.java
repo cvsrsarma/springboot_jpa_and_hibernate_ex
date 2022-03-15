@@ -14,39 +14,19 @@ import com.sb.orm.ex.step5.Inheritance.mapping.FullTimeEmployee;
 import com.sb.orm.ex.step5.Inheritance.mapping.PartTimeEmployee;
 
 @Service
-public class RunnerServiceHandler {
-
-	Logger logger = LoggerFactory.getLogger(this.getClass());
-
-	@Autowired
-	JpqlService servie;
-
-	@Autowired
-	JDBCService jdbcService;
+public class EmployeeService {
+	
+	Logger logger= LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	PresonService pService;
+	EmployeeRepository empRepo;
 	
-	@Autowired
-	CourseService cService;
-	
-	@Autowired
-	StudentService sService;
-	
-	@Autowired
-	EmployeeService eService;
-	
-
-	public void process() {
-		/*cService.runJPQLQueries();
-		pService.runPersonRepo();
-		jdbcService.runJdbcDao();
-		servie.runJPQLMethods();
-		sService.runStudentRepo();*/
+	public void runEmpRepo() {
+		empRepo.insertAnEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+		empRepo.insertAnEmployee(new PartTimeEmployee("Jill", new BigDecimal("20")));
 		
-		eService.runEmpRepo();
-		
-		
+		List<Employee> empList=empRepo.retrieveAllEmployees();
+		logger.info("List of employees {}",empList);
 	}
 
 }
