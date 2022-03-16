@@ -1,6 +1,9 @@
 package com.sb.orm.ex.step4.relationships.emrepo;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -22,6 +25,11 @@ public class StudentEMRepo {
 	public void retrieveStudentDetails(long l) {
 		Student student = em.find(Student.class, l);
 		logger.info("Student details {} and his passport details {}",student.toString(),student.getPassport().toString());
+	}
+	
+	public List<Student> retrieveStudentsLikePasssport(String passportNbr) {
+		TypedQuery<Student> tQuery = em.createQuery("select s from Student s where s.passport.number like '%"+passportNbr+"%'",Student.class);
+		return tQuery.getResultList();
 	}
 
 

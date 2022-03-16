@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.sb.orm.ex.entities.Course;
 import com.sb.orm.ex.entities.CourseDetails;
+import com.sb.orm.ex.entities.Student;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseDetailsRepo;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseRepository;
+import com.sb.orm.ex.step4.relationships.emrepo.StudentEMRepo;
 import com.sb.orm.ex.utlity.Utlity;
 
 @Service
@@ -26,6 +28,9 @@ public class JpqlService {
 	
 	@Autowired
 	CourseRepository cRepo;
+	
+	@Autowired
+	StudentEMRepo sEMRepo;
 
 	public void generateCourseDetailsData() {
 		for (int i = 0; i < 100; i++) {
@@ -71,7 +76,24 @@ public class JpqlService {
 		findCourseByNativeQueryParam02();
 		findCoursesWithOutStudents();
 		findCoursesWith10OrMoreStudents();
+		findCoursesOrderByStudents();
+		retrieveStudentsLikePasssport();
 		//generateCourseDetailsData();
+	}
+
+	private void retrieveStudentsLikePasssport() {
+		List<Student> stdList= sEMRepo.retrieveStudentsLikePasssport("6");
+		stdList.stream().forEach(x->{
+			logger.info("Student details {} where passport number contains 6 ",x.toString());
+		});
+	}
+
+	private void findCoursesOrderByStudents() {
+		List<Course> cdList = cRepo.findCoursesOrderByStudents();
+		cdList.stream().forEach(x -> {
+			logger.info("CourseDetails Order by number of students {}", x.toString());
+		});
+		
 	}
 
 	private void findCoursesWith10OrMoreStudents() {
@@ -84,7 +106,7 @@ public class JpqlService {
 	private void findCoursesWithOutStudents() {
 		List<Course> cdList = cRepo.findCoursesWithOutStudents();
 		cdList.stream().forEach(x -> {
-			logger.info("CourseDetails which doesn't have any students. {}", x.toString());
+			logger.info("CourseDetails which does have more than 10 students. {}", x.toString());
 		});
 	}
 }

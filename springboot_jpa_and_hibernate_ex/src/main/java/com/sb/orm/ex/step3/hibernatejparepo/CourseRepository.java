@@ -67,5 +67,10 @@ public class CourseRepository {
 		TypedQuery<Course> cdTypedQuery=em.createQuery("select c from Course c where size(c.students) >10",  Course.class);
 		return cdTypedQuery.getResultList();
 	}
+	
+	public List<Course> findCoursesOrderByStudents(){
+		TypedQuery<Course> cdTypedQuery=em.createQuery("select c from Course c order by size(c.students)",  Course.class);
+		return cdTypedQuery.getResultList();
+	}
 
 }
