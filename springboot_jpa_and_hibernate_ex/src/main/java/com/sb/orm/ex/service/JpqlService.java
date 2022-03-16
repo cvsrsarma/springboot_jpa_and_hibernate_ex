@@ -15,6 +15,7 @@ import com.sb.orm.ex.entities.Student;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseDetailsRepo;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseRepository;
 import com.sb.orm.ex.step4.relationships.emrepo.StudentEMRepo;
+import com.sb.orm.ex.step6.jpqljoins.JpqlJoinsEx;
 import com.sb.orm.ex.utlity.Utlity;
 
 @Service
@@ -31,6 +32,9 @@ public class JpqlService {
 	
 	@Autowired
 	StudentEMRepo sEMRepo;
+	
+	@Autowired
+	JpqlJoinsEx jpqlJoin;
 
 	public void generateCourseDetailsData() {
 		for (int i = 0; i < 100; i++) {
@@ -78,7 +82,23 @@ public class JpqlService {
 		findCoursesWith10OrMoreStudents();
 		findCoursesOrderByStudents();
 		retrieveStudentsLikePasssport();
+		retrieveStudentAndCourse();
+		getStudentLeftJoinCourseDetails();
 		//generateCourseDetailsData();
+	}
+	
+	private void getStudentLeftJoinCourseDetails() {
+		List<Object[]> csObject = jpqlJoin.getStudentLeftJoinCourseDetails();
+		csObject.stream().forEach(x->{
+			logger.info("Left join Course {} enrolled by Students {}", x[0], x[1]);
+		});
+	}
+
+	private void retrieveStudentAndCourse() {
+		List<Object[]> csObject = jpqlJoin.getStudentJoinCourseDetails();
+		csObject.stream().forEach(x->{
+			logger.info("Course {} enrolled by Students {}", x[0], x[1]);
+		});
 	}
 
 	private void retrieveStudentsLikePasssport() {
