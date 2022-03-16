@@ -13,13 +13,17 @@ import com.sb.orm.ex.step5.Inheritance.mapping.Employee2;
 import com.sb.orm.ex.step5.Inheritance.mapping.Employee2Repository;
 import com.sb.orm.ex.step5.Inheritance.mapping.Employee3;
 import com.sb.orm.ex.step5.Inheritance.mapping.Employee3Repository;
+import com.sb.orm.ex.step5.Inheritance.mapping.Employee4;
+import com.sb.orm.ex.step5.Inheritance.mapping.Employee4Repository;
 import com.sb.orm.ex.step5.Inheritance.mapping.EmployeeRepository;
 import com.sb.orm.ex.step5.Inheritance.mapping.FullTimeEmployee;
 import com.sb.orm.ex.step5.Inheritance.mapping.FullTimeEmployee2;
 import com.sb.orm.ex.step5.Inheritance.mapping.FullTimeEmployee3;
+import com.sb.orm.ex.step5.Inheritance.mapping.FullTimeEmployee4;
 import com.sb.orm.ex.step5.Inheritance.mapping.PartTimeEmployee;
 import com.sb.orm.ex.step5.Inheritance.mapping.PartTimeEmployee2;
 import com.sb.orm.ex.step5.Inheritance.mapping.PartTimeEmployee3;
+import com.sb.orm.ex.step5.Inheritance.mapping.PartTimeEmployee4;
 
 @Service
 public class EmployeeService {
@@ -34,6 +38,9 @@ public class EmployeeService {
 	
 	@Autowired
 	Employee3Repository emp3Repo;
+	
+	@Autowired
+	Employee4Repository emp4Repo;
 	
 	public void runEmpRepo() {
 		empRepo.insertAnEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
@@ -53,5 +60,13 @@ public class EmployeeService {
 		
 		List<Employee3> empList3=emp3Repo.retrieveAllEmployees();
 		logger.info("List of employees {}",empList);
+		
+		emp4Repo.insertAnEmployee(new FullTimeEmployee4("Jack", new BigDecimal("10000")));
+		emp4Repo.insertAnEmployee(new PartTimeEmployee4("Jill", new BigDecimal("20")));
+		
+		List<Employee4> empList4=emp4Repo.retrieveAllEmployees();
+		logger.info("List of employees {}",empList);
+		
+		
 	}
 }

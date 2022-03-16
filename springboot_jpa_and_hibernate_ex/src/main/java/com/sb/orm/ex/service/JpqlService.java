@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.orm.ex.entities.Course;
 import com.sb.orm.ex.entities.CourseDetails;
 import com.sb.orm.ex.step3.hibernatejparepo.CourseDetailsRepo;
+import com.sb.orm.ex.step3.hibernatejparepo.CourseRepository;
 import com.sb.orm.ex.utlity.Utlity;
 
 @Service
@@ -21,6 +23,9 @@ public class JpqlService {
 
 	@Autowired
 	CourseDetailsRepo cdRepo;
+	
+	@Autowired
+	CourseRepository cRepo;
 
 	public void generateCourseDetailsData() {
 		for (int i = 0; i < 100; i++) {
@@ -64,6 +69,22 @@ public class JpqlService {
 		//findCoursesByNativeQuery();
 		findCourseByNativeQueryParam();
 		findCourseByNativeQueryParam02();
+		findCoursesWithOutStudents();
+		findCoursesWith10OrMoreStudents();
 		//generateCourseDetailsData();
+	}
+
+	private void findCoursesWith10OrMoreStudents() {
+		List<Course> cdList = cRepo.findCoursesWith10OrMoreStudents();
+		cdList.stream().forEach(x -> {
+			logger.info("CourseDetails which doesn't have any students. {}", x.toString());
+		});
+	}
+
+	private void findCoursesWithOutStudents() {
+		List<Course> cdList = cRepo.findCoursesWithOutStudents();
+		cdList.stream().forEach(x -> {
+			logger.info("CourseDetails which doesn't have any students. {}", x.toString());
+		});
 	}
 }

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sb.orm.ex.entities.Course;
 import com.sb.orm.ex.entities.CourseDetails;
 
 @Repository
@@ -54,4 +55,6 @@ public class CourseDetailsRepo {
 		query.setParameter(2, "'%O%'");
 		return query.getResultList();
 	}
+
+	
 }

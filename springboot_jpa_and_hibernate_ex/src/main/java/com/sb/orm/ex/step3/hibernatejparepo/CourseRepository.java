@@ -58,4 +58,14 @@ public class CourseRepository {
 		return resultSet;
 	}
 
+	public List<Course> findCoursesWithOutStudents() {
+		TypedQuery<Course> cdTypedQuery=em.createQuery("select c from Course c where c.students is empty",  Course.class);
+		return cdTypedQuery.getResultList();
+	}
+	
+	public List<Course> findCoursesWith10OrMoreStudents() {
+		TypedQuery<Course> cdTypedQuery=em.createQuery("select c from Course c where size(c.students) >10",  Course.class);
+		return cdTypedQuery.getResultList();
+	}
+
 }

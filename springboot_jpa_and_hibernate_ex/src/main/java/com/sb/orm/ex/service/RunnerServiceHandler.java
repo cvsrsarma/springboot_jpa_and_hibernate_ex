@@ -45,6 +45,7 @@ public class RunnerServiceHandler {
 		sService.runStudentRepo();*/
 		
 		eService.runEmpRepo();
+		servie.runJPQLMethods();
 		
 		
 	}
