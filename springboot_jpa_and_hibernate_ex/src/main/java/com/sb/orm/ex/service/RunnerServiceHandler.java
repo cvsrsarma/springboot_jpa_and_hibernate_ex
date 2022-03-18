@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.orm.ex.service.sprngdatajpa.CourseSpringDataService;
 import com.sb.orm.ex.step5.Inheritance.mapping.Employee;
 import com.sb.orm.ex.step5.Inheritance.mapping.EmployeeRepository;
 import com.sb.orm.ex.step5.Inheritance.mapping.FullTimeEmployee;
@@ -36,6 +37,12 @@ public class RunnerServiceHandler {
 	@Autowired
 	EmployeeService eService;
 	
+	@Autowired
+	CriteriaService criteriaService;
+	
+	@Autowired
+	CourseSpringDataService cSpringDataService;
+	
 
 	public void process() {
 		/*cService.runJPQLQueries();
@@ -44,9 +51,10 @@ public class RunnerServiceHandler {
 		servie.runJPQLMethods();
 		sService.runStudentRepo();*/
 		
-		eService.runEmpRepo();
-		servie.runJPQLMethods();
-		
+		//eService.runEmpRepo();
+		//servie.runJPQLMethods();
+		//criteriaService.runCriteriaService();
+		cSpringDataService.courseSpringDataRunner();
 		
 	}
 

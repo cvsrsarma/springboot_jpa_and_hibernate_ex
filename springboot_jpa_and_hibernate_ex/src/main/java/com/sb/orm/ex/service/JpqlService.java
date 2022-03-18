@@ -82,8 +82,8 @@ public class JpqlService {
 		findCoursesWith10OrMoreStudents();
 		findCoursesOrderByStudents();
 		retrieveStudentsLikePasssport();
-		retrieveStudentAndCourse();
-		getStudentLeftJoinCourseDetails();
+		//retrieveStudentAndCourse();
+		//getStudentLeftJoinCourseDetails();
 		//generateCourseDetailsData();
 	}
 	
