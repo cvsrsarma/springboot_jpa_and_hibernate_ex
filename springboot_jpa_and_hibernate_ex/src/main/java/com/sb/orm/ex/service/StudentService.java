@@ -9,11 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.orm.ex.entities.Address;
 import com.sb.orm.ex.entities.Student;
 import com.sb.orm.ex.step4.relationships.PassportRepo;
 import com.sb.orm.ex.step4.relationships.StudentJPARepo;
 import com.sb.orm.ex.step4.relationships.emrepo.PassportEmRepo;
 import com.sb.orm.ex.step4.relationships.emrepo.StudentEMRepo;
+import com.sb.orm.ex.utlity.Utlity;
 
 @Service
 @Transactional
@@ -35,6 +37,7 @@ public class StudentService {
 	public void runStudentRepo() {
 		try {
 			logger.info("{} running student find by id ",this.getClass().getName());
+			saveStudent();
 		findStudentById(152L);
 		findStudentByPassportId(152L);
 		findStudentAndCourses(210L);
@@ -44,6 +47,13 @@ public class StudentService {
 		
 	}
 	
+	private void saveStudent() {
+		Student std = new Student(Utlity.generateRandomName());
+		Address address= new Address(Utlity.generateRandomTextWithSpaces(10),Utlity.generateRandomTextWithSpaces(15),Utlity.generateRandomText(10),Utlity.generateRandomNumber(5));
+		std.setAddress(address);
+		sRepo.save(std);
+	}
+
 	@Transactional
 	private void findStudentAndCourses(long l) {
 		Optional<Student> std= sRepo.findById(l);

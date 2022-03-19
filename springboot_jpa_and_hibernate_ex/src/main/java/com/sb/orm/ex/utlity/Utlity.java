@@ -50,4 +50,22 @@ public interface Utlity {
     	Random rd = new Random();
     	return rd.nextBoolean();
     }
+
+	public static String generateRandomTextWithSpaces(int j) {
+		String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
+		Random rnd = new Random();
+		StringBuilder sb = new StringBuilder(j);
+		for (int i = 0; i < j; i++)
+			sb.append(chars.charAt(rnd.nextInt(chars.length())));
+		return sb.toString().trim();
+	}
+
+	public static String generateRandomNumber(int j) {
+		String chars = "0123456789";
+		Random rnd = new Random();
+		StringBuilder sb = new StringBuilder(j);
+		for (int i = 0; i < j; i++)
+			sb.append(chars.charAt(rnd.nextInt(chars.length())));
+		return sb.toString();
+	}
 }
